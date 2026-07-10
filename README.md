@@ -1,5 +1,22 @@
 # Zabbix Monitoring Demo
 
+
+## Architecture
+
+```mermaid
+flowchart LR
+  Agent[Zabbix Agent2] --> Server[Zabbix Server]
+  Server --> PG[(PostgreSQL)]
+  Web[Zabbix Web Nginx] --> Server
+  Web --> PG
+  Admin((Admin)) --> Web
+```
+
+```text
+Admin → Web UI :8082 → Zabbix Server → PostgreSQL
+                Agent → Server :10051
+```
+
 **Stack skill:** `Zabbix` · `Linux` · `Docker` · `Nginx` (optional proxy)
 
 Portfolio lab for Zabbix 7 server + web + PostgreSQL + agent.
@@ -24,3 +41,9 @@ docker compose up -d
 3. Check Latest data for CPU / memory / filesystem
 
 > Demo passwords are intentionally simple — change for real environments.
+
+## Screenshots / how it looks
+
+> Diagrams above show architecture. Run the stack locally and attach UI screenshots here if needed:
+> - `docs/screenshots/` folder (optional)
+> - keep secrets out of screenshots
